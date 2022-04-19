@@ -48,10 +48,10 @@ class Ford implements Car {
     }
 }
 
-$my_car = new Chevy(50000);
+$my_car = new Chevy(20000);
 echo 'My Chevy: ' . $my_car->finalCost(12) . '<br />';
 
-$my_ford = new Ford(50000);
+$my_ford = new Ford(20000);
 echo 'My Ford: ' . $my_ford->finalCost(12);
 ?>
 </body>
