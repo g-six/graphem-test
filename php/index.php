@@ -1,3 +1,6 @@
+<!DOCTYPE html>
+<html>
+<body>
 <?php 
 
 /************************************************* 
@@ -18,5 +21,38 @@ Instruction:
 
 ***************************************************/
 
+interface Car {
+    public function finalCost($tax_percentage);
+}
+  
+class Chevy implements Car {
+    protected $cost;
+    function __construct($cost) {
+        $this->cost = $cost;
+    }
 
+    function finalCost($tax_percentage) {
+        return $this->cost * (1 + $tax_percentage / 100);
+    }
+}
+  
+class Ford implements Car {
+    protected $cost;
+    protected $handling_fee = 1000;
+    function __construct($cost) {
+        $this->cost = $cost + $this->handling_fee;
+    }
+
+    function finalCost($tax_percentage) {
+        return $this->cost * (1 + $tax_percentage / 100);
+    }
+}
+
+$my_car = new Chevy(50000);
+echo 'My Chevy: ' . $my_car->finalCost(12) . '<br />';
+
+$my_ford = new Ford(50000);
+echo 'My Ford: ' . $my_ford->finalCost(12);
 ?>
+</body>
+</html>
