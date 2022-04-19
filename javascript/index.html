@@ -34,12 +34,31 @@
 	-->
 	
 	<script>
-	
+		$(document).ready( function() { // Wait until document is fully parsed
+			$("#frm_sample").on('submit', function(e){
+				e.preventDefault();
+				if ($("#txt_paragraph").val().length > 0) {
+					$("#temp_section").fadeOut(300);
+					$("<h1 color=\"red\">"+$("#txt_paragraph").val()+"</h1>").insertBefore("#frm_sample")
+					$("button").prop('disabled', true)
+				} else {
+					$("#temp_section p").html("You message should not be empty.")
+				}
+			});
+		})
 	
 	</script>
 	
   </head>
   <body>
-    
+    <section id="temp_section">
+		<div>
+			<p>Paragraph text</p>
+		</div>
+	</section>
+	<form id="frm_sample" onsubmit="">
+		<input type="text" id="txt_paragraph" />
+		<button type="submit">Submit Form</button>
+	</form>
   </body>
 </html>
